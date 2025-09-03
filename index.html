@@ -3,204 +3,216 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Фотограф Ольга Мельникова</title>
+  <title>Мельникова Ольга — Фотограф</title>
   <style>
     body {
+      margin: 0;
       font-family: 'Arial', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #fafafa;
       color: #333;
+      background: #f7f7f7;
     }
-    header {
-      background: #f4e1f2;
-      color: #333;
-      padding: 20px 0;
-      text-align: center;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2.5em;
-    }
+
+    /* Навигация */
     nav {
-      margin-top: 10px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #2c3e50;
+      color: white;
+      padding: 15px 0;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      z-index: 1000;
     }
+
     nav a {
-      color: #333;
-      margin: 0 15px;
+      color: white;
       text-decoration: none;
       font-weight: bold;
+      transition: 0.3s;
     }
+
     nav a:hover {
-      color: #9c27b0;
+      color: #f1c40f;
     }
+
+    header {
+      text-align: center;
+      padding: 120px 20px 60px;
+      background: linear-gradient(to right, #74ebd5, #acb6e5);
+      color: #2c3e50;
+    }
+
+    header h1 {
+      font-size: 2.8em;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.2em;
+    }
+
     section {
-      padding: 40px 20px;
-      max-width: 1000px;
+      padding: 60px 20px;
+      max-width: 1100px;
       margin: auto;
     }
+
     h2 {
       text-align: center;
-      margin-bottom: 20px;
-      color: #9c27b0;
+      margin-bottom: 30px;
+      font-size: 2em;
+      color: #2c3e50;
     }
-    .about {
-      text-align: center;
-      font-size: 1.1em;
-      line-height: 1.6em;
-    }
+
+    /* Галерея */
     .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 15px;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 10px;
     }
+
     .gallery img {
       width: 100%;
-      border-radius: 8px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 6px;
       cursor: pointer;
       transition: transform 0.3s;
     }
+
     .gallery img:hover {
       transform: scale(1.05);
     }
-    .lightbox {
+
+    /* Модальное окно для фото */
+    .modal {
       display: none;
       position: fixed;
-      z-index: 1000;
-      left: 0; top: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.9);
-      justify-content: center;
-      align-items: center;
+      z-index: 2000;
+      padding-top: 50px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.9);
     }
-    .lightbox img {
+
+    .modal-content {
+      margin: auto;
+      display: block;
       max-width: 90%;
       max-height: 80%;
-      border-radius: 10px;
     }
-    .lightbox:target {
-      display: flex;
-    }
-    .lightbox .close {
+
+    .close {
       position: absolute;
-      top: 20px; right: 30px;
+      top: 20px;
+      right: 35px;
+      color: white;
       font-size: 40px;
-      color: #fff;
-      text-decoration: none;
-    }
-    .lightbox .nav {
-      position: absolute;
-      top: 50%;
-      font-size: 50px;
-      color: #fff;
-      text-decoration: none;
-      padding: 20px;
+      font-weight: bold;
       cursor: pointer;
-      user-select: none;
     }
-    .lightbox .prev { left: 0; }
-    .lightbox .next { right: 0; }
+
+    /* Контакты */
+    .contact {
+      text-align: center;
+      font-size: 1.2em;
+    }
+
     footer {
-      background: #f4e1f2;
       text-align: center;
       padding: 20px;
-      margin-top: 40px;
-      font-size: 0.9em;
-    }
-    footer a {
-      color: #9c27b0;
-      text-decoration: none;
+      background: #2c3e50;
+      color: white;
     }
   </style>
 </head>
 <body>
+
+  <!-- Навигация -->
+  <nav>
+    <a href="#about">Обо мне</a>
+    <a href="#gallery">Галерея</a>
+    <a href="#contact">Контакты</a>
+    <a href="https://www.instagram.com/melnikovaolga_ph" target="_blank">Instagram</a>
+  </nav>
+
+  <!-- Шапка -->
   <header>
-    <h1>Ольга Мельникова</h1>
-    <nav>
-      <a href="#about">Обо мне</a>
-      <a href="#gallery">Галерея</a>
-      <a href="#contact">Контакты</a>
-      <a href="https://www.instagram.com/melnikovaolga_ph" target="_blank">Instagram</a>
-    </nav>
+    <h1>Мельникова Ольга</h1>
+    <p>Фотограф, который помогает сохранить самые важные моменты</p>
   </header>
 
+  <!-- Обо мне -->
   <section id="about">
     <h2>Обо мне</h2>
-    <p class="about">
-      Я — Ольга Мельникова, профессиональный фотограф.<br>
-      Люблю ловить живые эмоции, создавать яркие воспоминания и дарить людям радость через фотографии.
+    <p style="text-align:center; max-width:800px; margin:auto;">
+      Привет! Меня зовут Ольга, я фотограф и обожаю ловить живые эмоции, искренние улыбки и настоящую атмосферу. 
+      Моя цель — чтобы каждая фотография напоминала вам о самых ценных моментах вашей жизни.
     </p>
   </section>
 
+  <!-- Галерея -->
   <section id="gallery">
     <h2>Галерея</h2>
     <div class="gallery">
-      <img src="IMG_0401.jpeg" alt="Фото 1" onclick="openLightbox(0)">
-      <img src="IMG_0402.jpeg" alt="Фото 2" onclick="openLightbox(1)">
-      <img src="IMG_0403.jpeg" alt="Фото 3" onclick="openLightbox(2)">
-      <img src="IMG_0404.jpeg" alt="Фото 4" onclick="openLightbox(3)">
-      <img src="IMG_0405.jpeg" alt="Фото 5" onclick="openLightbox(4)">
-      <img src="IMG_0406.jpeg" alt="Фото 6" onclick="openLightbox(5)">
-      <img src="IMG_0407.jpeg" alt="Фото 7" onclick="openLightbox(6)">
-      <img src="IMG_0408.jpeg" alt="Фото 8" onclick="openLightbox(7)">
-      <img src="IMG_7197.jpeg" alt="Фото 9" onclick="openLightbox(8)">
-      <img src="IMG_7198.jpeg" alt="Фото 10" onclick="openLightbox(9)">
-      <img src="IMG_7199.jpeg" alt="Фото 11" onclick="openLightbox(10)">
+      <img src="IMG_0401.jpeg" alt="Фото 1">
+      <img src="IMG_0402.jpeg" alt="Фото 2">
+      <img src="IMG_0403.jpeg" alt="Фото 3">
+      <img src="IMG_0404.jpeg" alt="Фото 4">
+      <img src="IMG_0405.jpeg" alt="Фото 5">
+      <img src="IMG_0406.jpeg" alt="Фото 6">
+      <img src="IMG_0407.jpeg" alt="Фото 7">
+      <img src="IMG_0408.jpeg" alt="Фото 8">
+      <img src="IMG_7197.jpeg" alt="Фото 9">
+      <img src="IMG_7198.jpeg" alt="Фото 10">
     </div>
   </section>
 
-  <div id="lightbox" class="lightbox">
-    <a href="#" class="close">&times;</a>
-    <a class="nav prev" onclick="prevImage()">&#10094;</a>
-    <img id="lightbox-img" src="">
-    <a class="nav next" onclick="nextImage()">&#10095;</a>
-  </div>
-
+  <!-- Контакты -->
   <section id="contact">
     <h2>Контакты</h2>
-    <p style="text-align:center;">
-      Телефон: <a href="tel:+79281400610">+7 928 140-06-10</a><br>
-      Instagram: <a href="https://www.instagram.com/melnikovaolga_ph" target="_blank">@melnikovaolga_ph</a>
-    </p>
+    <div class="contact">
+      <p>📞 Телефон: <a href="tel:+79281400610">+7 (928) 140-06-10</a></p>
+      <p>📸 Instagram: <a href="https://www.instagram.com/melnikovaolga_ph" target="_blank">@melnikovaolga_ph</a></p>
+    </div>
   </section>
 
   <footer>
-    <p>© 2025 Ольга Мельникова. Все права защищены.</p>
+    <p>© 2025 Мельникова Ольга. Все права защищены.</p>
   </footer>
 
   <script>
-    const images = [
-      "IMG_0401.jpeg",
-      "IMG_0402.jpeg",
-      "IMG_0403.jpeg",
-      "IMG_0404.jpeg",
-      "IMG_0405.jpeg",
-      "IMG_0406.jpeg",
-      "IMG_0407.jpeg",
-      "IMG_0408.jpeg",
-      "IMG_7197.jpeg",
-      "IMG_7198.jpeg",
-      "IMG_7199.jpeg"
-    ];
-    let currentIndex = 0;
+    // Модальное окно
+    const modal = document.createElement("div");
+    modal.classList.add("modal");
+    modal.innerHTML = `
+      <span class="close">&times;</span>
+      <img class="modal-content" id="modalImg">
+    `;
+    document.body.appendChild(modal);
 
-    function openLightbox(index) {
-      currentIndex = index;
-      document.getElementById("lightbox").style.display = "flex";
-      document.getElementById("lightbox-img").src = images[index];
-    }
-    function closeLightbox() {
-      document.getElementById("lightbox").style.display = "none";
-    }
-    function prevImage() {
-      currentIndex = (currentIndex - 1 + images.length) % images.length;
-      document.getElementById("lightbox-img").src = images[currentIndex];
-    }
-    function nextImage() {
-      currentIndex = (currentIndex + 1) % images.length;
-      document.getElementById("lightbox-img").src = images[currentIndex];
-    }
+    const modalImg = document.getElementById("modalImg");
+    const closeBtn = modal.querySelector(".close");
+
+    document.querySelectorAll(".gallery img").forEach(img => {
+      img.onclick = () => {
+        modal.style.display = "block";
+        modalImg.src = img.src;
+      };
+    });
+
+    closeBtn.onclick = () => {
+      modal.style.display = "none";
+    };
+
+    modal.onclick = (e) => {
+      if (e.target === modal) modal.style.display = "none";
+    };
   </script>
+
 </body>
 </html>
