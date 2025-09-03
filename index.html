@@ -63,103 +63,41 @@
       opacity: 1;
       transform: translateY(0);
     }
-    /* --- Слайдер --- */
-    .slider {
-      position: relative;
-      max-width: 1000px;
-      margin: auto;
-      overflow: hidden;
-      border-radius: 10px;
-    }
-    .slides {
+    .card-container {
       display: flex;
-      transition: transform 0.8s ease;
-    }
-    .slides img {
-      width: 100%;
-      border-radius: 10px;
-    }
-    .slider-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(0,0,0,0.5);
-      color: white;
-      border: none;
-      font-size: 2em;
-      padding: 10px;
-      cursor: pointer;
-      border-radius: 50%;
-    }
-    .prev { left: 10px; }
-    .next { right: 10px; }
-    /* --- Галерея --- */
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 15px;
-    }
-    .gallery-item {
-      position: relative;
-      overflow: hidden;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-    .gallery img {
-      width: 100%;
-      display: block;
-      transition: transform 0.5s ease;
-    }
-    .gallery-item:hover img {
-      transform: scale(1.1);
-      filter: brightness(70%);
-    }
-    .gallery-item span {
-      position: absolute;
-      bottom: 10px;
-      left: 10px;
-      color: white;
-      font-weight: bold;
-      opacity: 0;
-      transition: opacity 0.5s;
-    }
-    .gallery-item:hover span {
-      opacity: 1;
-    }
-    /* --- Лайтбокс --- */
-    .lightbox {
-      display: none;
-      position: fixed;
-      z-index: 2000;
-      left: 0; top: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.9);
+      flex-wrap: wrap;
       justify-content: center;
-      align-items: center;
+      gap: 20px;
     }
-    .lightbox img {
-      max-width: 90%;
-      max-height: 80%;
+    .card {
+      flex: 1 1 250px;
+      max-width: 300px;
+      text-decoration: none;
+      border: 1px solid #ddd;
       border-radius: 10px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      background: white;
+      transition: 0.3s;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      overflow: hidden;
     }
-    .lightbox-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 3em;
-      color: white;
-      cursor: pointer;
-      user-select: none;
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     }
-    .lightbox .prev { left: 5%; }
-    .lightbox .next { right: 5%; }
-    .lightbox .close {
-      position: absolute;
-      top: 5%;
-      right: 5%;
-      font-size: 3em;
-      cursor: pointer;
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+    .card h3 {
+      margin: 15px 0 10px;
+      color: #333;
+    }
+    .card p {
+      font-size: 0.9em;
+      color: #555;
+      padding: 0 15px 15px;
     }
     footer {
       text-align: center;
@@ -181,7 +119,6 @@
 <body>
   <nav>
     <a href="#about">Обо мне</a>
-    <a href="#slider">Слайдер</a>
     <a href="#gallery">Галерея</a>
     <a href="#contacts">Контакты</a>
   </nav>
@@ -199,54 +136,24 @@
       Работаю в разных стилях: портретная, семейная, свадебная и креативная фотосессия.
     </p>
   </section>
-<section id="gallery" style="padding: 60px 20px; text-align: center; background: #f9f9f9;">
-  <h2 style="font-size: 2em; margin-bottom: 20px;">Галерея</h2>
-  <p style="margin-bottom: 30px;">Посмотрите мои фотопроекты:</p>
-  
-  <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
-    <a href="https://melnikova-olga-1986.wfolio.pro/disk/17-08-2025-tselaya-vselennaya-tv873x" target="_blank"
-       style="flex: 1 1 250px; max-width: 300px; text-decoration: none; border: 1px solid #ddd; border-radius: 10px; background: white; transition: 0.3s; box-shadow: 0 2px 5px rgba(0,0,0,0.1); overflow: hidden;">
-      <img src="ТУТ_ССЫЛКА_НА_ПРЕВЬЮ1" alt="Целая Вселенная" style="width: 100%; height: 200px; object-fit: cover;">
-      <div style="padding: 15px;">
-        <h3 style="margin-bottom: 10px; color: #333;">Целая Вселенная</h3>
-        <p style="font-size: 0.9em; color: #555;">Серия фотографий, полная эмоций и красоты.</p>
-      </div>
-    </a>
 
-    <a href="https://melnikova-olga-1986.wfolio.pro/disk/06-07-2025-ilyuhin-godik-txndrl" target="_blank"
-       style="flex: 1 1 250px; max-width: 300px; text-decoration: none; border: 1px solid #ddd; border-radius: 10px; background: white; transition: 0.3s; box-shadow: 0 2px 5px rgba(0,0,0,0.1); overflow: hidden;">
-      <img src="ТУТ_ССЫЛКА_НА_ПРЕВЬЮ2" alt="Илюхин годик" style="width: 100%; height: 200px; object-fit: cover;">
-      <div style="padding: 15px;">
-        <h3 style="margin-bottom: 10px; color: #333;">Илюхин годик</h3>
-        <p style="font-size: 0.9em; color: #555;">Трогательная серия из семейного альбома.</p>
-      </div>
-    </a>
-  </div>
-</section>
-  <!-- Слайдер -->
-  <section id="slider">
-    <h2>Лучшие кадры</h2>
-    <div class="slider">
-      <div class="slides">
-        <img src="https://picsum.photos/1000/500?random=10" alt="Фото 1">
-        <img src="https://picsum.photos/1000/500?random=11" alt="Фото 2">
-        <img src="https://picsum.photos/1000/500?random=12" alt="Фото 3">
-      </div>
-      <button class="slider-btn prev">&#10094;</button>
-      <button class="slider-btn next">&#10095;</button>
-    </div>
-  </section>
-
-  <!-- Галерея -->
   <section id="gallery">
     <h2>Галерея</h2>
-    <div class="gallery">
-      <div class="gallery-item"><img src="https://picsum.photos/400/300?random=1" alt="Фото"><span>Портрет</span></div>
-      <div class="gallery-item"><img src="https://picsum.photos/400/300?random=2" alt="Фото"><span>Свадьба</span></div>
-      <div class="gallery-item"><img src="https://picsum.photos/400/300?random=3" alt="Фото"><span>Семья</span></div>
-      <div class="gallery-item"><img src="https://picsum.photos/400/300?random=4" alt="Фото"><span>Творчество</span></div>
-      <div class="gallery-item"><img src="https://picsum.photos/400/300?random=5" alt="Фото"><span>Дети</span></div>
-      <div class="gallery-item"><img src="https://picsum.photos/400/300?random=6" alt="Фото"><span>Fashion</span></div>
+    <p>Посмотрите мои фотопроекты:</p>
+    <div class="card-container">
+      
+      <a href="https://melnikova-olga-1986.wfolio.pro/disk/17-08-2025-tselaya-vselennaya-tv873x" target="_blank" class="card">
+        <img src="ТУТ_ССЫЛКА_НА_ПРЕВЬЮ1" alt="Целая Вселенная">
+        <h3>Целая Вселенная</h3>
+        <p>Серия фотографий, полная эмоций и красоты.</p>
+      </a>
+
+      <a href="https://melnikova-olga-1986.wfolio.pro/disk/06-07-2025-ilyuhin-godik-txndrl" target="_blank" class="card">
+        <img src="ТУТ_ССЫЛКА_НА_ПРЕВЬЮ2" alt="Илюхин годик">
+        <h3>Илюхин годик</h3>
+        <p>Трогательная серия из семейного альбома.</p>
+      </a>
+
     </div>
   </section>
 
@@ -264,16 +171,8 @@
     © 2025 Мельникова Ольга | Создано с ❤️
   </footer>
 
-  <!-- Лайтбокс -->
-  <div class="lightbox" id="lightbox">
-    <span class="close">&times;</span>
-    <span class="lightbox-btn prev">&#10094;</span>
-    <img src="" alt="Просмотр фото">
-    <span class="lightbox-btn next">&#10095;</span>
-  </div>
-
   <script>
-    // анимация при скролле
+    // анимация появления блоков при скролле
     const sections = document.querySelectorAll("section");
     const showSection = () => {
       let triggerBottom = window.innerHeight * 0.85;
@@ -286,66 +185,6 @@
     };
     window.addEventListener("scroll", showSection);
     showSection();
-
-    // слайдер
-    const slides = document.querySelector(".slides");
-    const images = document.querySelectorAll(".slides img");
-    const prevBtn = document.querySelector(".prev");
-    const nextBtn = document.querySelector(".next");
-
-    let index = 0;
-    function showSlide(i) {
-      if (i >= images.length) index = 0;
-      if (i < 0) index = images.length - 1;
-      slides.style.transform = `translateX(${-index * 100}%)`;
-    }
-    nextBtn.addEventListener("click", () => { index++; showSlide(index); });
-    prevBtn.addEventListener("click", () => { index--; showSlide(index); });
-    setInterval(() => { index++; showSlide(index); }, 4000);
-
-    // Лайтбокс
-    const galleryItems = document.querySelectorAll(".gallery img");
-    const lightbox = document.getElementById("lightbox");
-    const lightboxImg = lightbox.querySelector("img");
-    const lightboxClose = lightbox.querySelector(".close");
-    const lightboxPrev = lightbox.querySelector(".prev");
-    const lightboxNext = lightbox.querySelector(".next");
-
-    let currentIndex = 0;
-
-    galleryItems.forEach((img, i) => {
-      img.addEventListener("click", () => {
-        lightbox.style.display = "flex";
-        lightboxImg.src = img.src;
-        currentIndex = i;
-      });
-    });
-
-    function showLightbox(n) {
-      if (n >= galleryItems.length) currentIndex = 0;
-      if (n < 0) currentIndex = galleryItems.length - 1;
-      lightboxImg.src = galleryItems[currentIndex].src;
-    }
-
-    lightboxPrev.addEventListener("click", () => {
-      currentIndex--;
-      showLightbox(currentIndex);
-    });
-
-    lightboxNext.addEventListener("click", () => {
-      currentIndex++;
-      showLightbox(currentIndex);
-    });
-
-    lightboxClose.addEventListener("click", () => {
-      lightbox.style.display = "none";
-    });
-
-    window.addEventListener("click", (e) => {
-      if (e.target === lightbox) {
-        lightbox.style.display = "none";
-      }
-    });
   </script>
 </body>
 </html>
