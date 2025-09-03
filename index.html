@@ -3,221 +3,182 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Мельникова Ольга — Фотограф</title>
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Open+Sans&display=swap" rel="stylesheet">
+  <title>Фотограф Ольга Мельникова</title>
   <style>
     body {
+      font-family: 'Arial', sans-serif;
       margin: 0;
-      font-family: 'Open Sans', sans-serif;
-      color: #5c4b3b;
-      background: #fdf6e3 url('https://www.transparenttextures.com/patterns/watercolor.png');
-      scroll-behavior: smooth;
+      padding: 0;
+      background: #fafafa;
+      color: #333;
     }
-    h1, h2 {
-      font-family: 'Playfair Display', serif;
+    header {
+      background: #f4e1f2;
+      color: #333;
+      padding: 20px 0;
       text-align: center;
-      margin-bottom: 30px;
-      color: #5c4b3b;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
     }
     nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: rgba(253,246,227,0.95);
-      padding: 15px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      z-index: 1000;
-      backdrop-filter: blur(6px);
+      margin-top: 10px;
     }
     nav a {
+      color: #333;
+      margin: 0 15px;
       text-decoration: none;
-      color: #5c4b3b;
       font-weight: bold;
-      transition: color 0.3s;
     }
     nav a:hover {
-      color: #8ca97d;
+      color: #9c27b0;
     }
     section {
-      padding: 100px 20px;
-      max-width: 1100px;
+      padding: 40px 20px;
+      max-width: 1000px;
       margin: auto;
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s ease;
     }
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .about-text {
+    h2 {
       text-align: center;
-      font-size: 18px;
-      max-width: 700px;
-      margin: auto;
-      line-height: 1.6;
+      margin-bottom: 20px;
+      color: #9c27b0;
+    }
+    .about {
+      text-align: center;
+      font-size: 1.1em;
+      line-height: 1.6em;
     }
     .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
     }
     .gallery img {
       width: 100%;
-      height: auto;
-      border-radius: 10px;
+      border-radius: 8px;
       cursor: pointer;
-      transition: transform 0.3s, box-shadow 0.3s;
+      transition: transform 0.3s;
     }
     .gallery img:hover {
       transform: scale(1.05);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
-    /* Лайтбокс */
     .lightbox {
       display: none;
       position: fixed;
-      z-index: 2000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(253,246,227,0.98);
+      z-index: 1000;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.9);
       justify-content: center;
       align-items: center;
-      flex-direction: column;
     }
     .lightbox img {
       max-width: 90%;
       max-height: 80%;
       border-radius: 10px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
     }
-    .lightbox.active {
+    .lightbox:target {
       display: flex;
     }
-    .close, .prev, .next {
+    .lightbox .close {
       position: absolute;
-      color: #5c4b3b;
+      top: 20px; right: 30px;
       font-size: 40px;
+      color: #fff;
       text-decoration: none;
+    }
+    .lightbox .nav {
+      position: absolute;
+      top: 50%;
+      font-size: 50px;
+      color: #fff;
+      text-decoration: none;
+      padding: 20px;
       cursor: pointer;
       user-select: none;
     }
-    .close { top: 20px; right: 40px; }
-    .prev { left: 40px; top: 50%; transform: translateY(-50%); }
-    .next { right: 40px; top: 50%; transform: translateY(-50%); }
-    /* Контакты */
-    #contacts p {
-      text-align: center;
-      font-size: 18px;
-    }
-    .btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 12px 25px;
-      background: #d9826b;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 6px;
-      font-size: 18px;
-      transition: background 0.3s;
-    }
-    .btn:hover {
-      background: #8ca97d;
-    }
+    .lightbox .prev { left: 0; }
+    .lightbox .next { right: 0; }
     footer {
-      background: #5c4b3b;
-      color: #fff;
+      background: #f4e1f2;
       text-align: center;
       padding: 20px;
       margin-top: 40px;
+      font-size: 0.9em;
+    }
+    footer a {
+      color: #9c27b0;
+      text-decoration: none;
     }
   </style>
 </head>
 <body>
+  <header>
+    <h1>Ольга Мельникова</h1>
+    <nav>
+      <a href="#about">Обо мне</a>
+      <a href="#gallery">Галерея</a>
+      <a href="#contact">Контакты</a>
+      <a href="https://www.instagram.com/melnikovaolga_ph" target="_blank">Instagram</a>
+    </nav>
+  </header>
 
-  <!-- Меню -->
-  <nav>
-    <a href="#about">Обо мне</a>
-    <a href="#gallery">Галерея</a>
-    <a href="#contacts">Контакты</a>
-  </nav>
-
-  <!-- Обо мне -->
-  <section id="about" style="
-    background: url('IMG_7197.jpeg') center/cover no-repeat;
-    position: relative;
-    color: #5c4b3b;
-    border-radius: 12px;
-    overflow: hidden;
-  ">
-    <div style="
-      background: rgba(253,246,227,0.85);
-      padding: 80px 20px;
-      border-radius: 12px;
-    ">
-      <h1>Мельникова Ольга</h1>
-      <p class="about-text">
-        Я — профессиональный фотограф, специализируюсь на семейных, детских и индивидуальных фотосессиях.
-        Моя цель — поймать настоящие эмоции и сохранить для вас самые ценные воспоминания.
-      </p>
-    </div>
+  <section id="about">
+    <h2>Обо мне</h2>
+    <p class="about">
+      Я — Ольга Мельникова, профессиональный фотограф.<br>
+      Люблю ловить живые эмоции, создавать яркие воспоминания и дарить людям радость через фотографии.
+    </p>
   </section>
 
-  <!-- Галерея -->
   <section id="gallery">
     <h2>Галерея</h2>
     <div class="gallery">
-      <img src="IMG_7197.jpeg" alt="Фото 1" onclick="openLightbox(0)">
-      <img src="IMG_7198.jpeg" alt="Фото 2" onclick="openLightbox(1)">
-      <img src="IMG_7199.jpeg" alt="Фото 3" onclick="openLightbox(2)">
+      <img src="IMG_0401.jpeg" alt="Фото 1" onclick="openLightbox(0)">
+      <img src="IMG_0402.jpeg" alt="Фото 2" onclick="openLightbox(1)">
+      <img src="IMG_0403.jpeg" alt="Фото 3" onclick="openLightbox(2)">
+      <img src="IMG_0404.jpeg" alt="Фото 4" onclick="openLightbox(3)">
+      <img src="IMG_0405.jpeg" alt="Фото 5" onclick="openLightbox(4)">
+      <img src="IMG_0406.jpeg" alt="Фото 6" onclick="openLightbox(5)">
+      <img src="IMG_0407.jpeg" alt="Фото 7" onclick="openLightbox(6)">
+      <img src="IMG_0408.jpeg" alt="Фото 8" onclick="openLightbox(7)">
+      <img src="IMG_7197.jpeg" alt="Фото 9" onclick="openLightbox(8)">
+      <img src="IMG_7198.jpeg" alt="Фото 10" onclick="openLightbox(9)">
+      <img src="IMG_7199.jpeg" alt="Фото 11" onclick="openLightbox(10)">
     </div>
   </section>
 
-  <!-- Лайтбокс -->
   <div id="lightbox" class="lightbox">
-    <span class="close" onclick="closeLightbox()">×</span>
-    <span class="prev" onclick="changeSlide(-1)">❮</span>
+    <a href="#" class="close">&times;</a>
+    <a class="nav prev" onclick="prevImage()">&#10094;</a>
     <img id="lightbox-img" src="">
-    <span class="next" onclick="changeSlide(1)">❯</span>
+    <a class="nav next" onclick="nextImage()">&#10095;</a>
   </div>
 
-  <!-- Контакты -->
-  <section id="contacts">
+  <section id="contact">
     <h2>Контакты</h2>
-    <p>
-      📱 Телефон: <a href="tel:+79281400610">+7 928 140-06-10</a><br>
-      📸 Instagram: <a href="https://www.instagram.com/melnikovaolga_ph" target="_blank">@melnikovaolga_ph</a>
+    <p style="text-align:center;">
+      Телефон: <a href="tel:+79281400610">+7 928 140-06-10</a><br>
+      Instagram: <a href="https://www.instagram.com/melnikovaolga_ph" target="_blank">@melnikovaolga_ph</a>
     </p>
-    <div style="text-align:center;">
-      <a href="https://wa.me/79281400610" class="btn">Записаться на фотосессию</a>
-    </div>
   </section>
 
   <footer>
-    © 2025 Мельникова Ольга — Фотограф
+    <p>© 2025 Ольга Мельникова. Все права защищены.</p>
   </footer>
 
-  <!-- JS -->
   <script>
-    // Анимация появления секций при скролле
-    const sections = document.querySelectorAll("section");
-    window.addEventListener("scroll", () => {
-      sections.forEach(sec => {
-        const rect = sec.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 100) {
-          sec.classList.add("visible");
-        }
-      });
-    });
-
-    // Лайтбокс
     const images = [
+      "IMG_0401.jpeg",
+      "IMG_0402.jpeg",
+      "IMG_0403.jpeg",
+      "IMG_0404.jpeg",
+      "IMG_0405.jpeg",
+      "IMG_0406.jpeg",
+      "IMG_0407.jpeg",
+      "IMG_0408.jpeg",
       "IMG_7197.jpeg",
       "IMG_7198.jpeg",
       "IMG_7199.jpeg"
@@ -226,19 +187,20 @@
 
     function openLightbox(index) {
       currentIndex = index;
-      document.getElementById("lightbox").classList.add("active");
+      document.getElementById("lightbox").style.display = "flex";
+      document.getElementById("lightbox-img").src = images[index];
+    }
+    function closeLightbox() {
+      document.getElementById("lightbox").style.display = "none";
+    }
+    function prevImage() {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
       document.getElementById("lightbox-img").src = images[currentIndex];
     }
-
-    function closeLightbox() {
-      document.getElementById("lightbox").classList.remove("active");
-    }
-
-    function changeSlide(n) {
-      currentIndex = (currentIndex + n + images.length) % images.length;
+    function nextImage() {
+      currentIndex = (currentIndex + 1) % images.length;
       document.getElementById("lightbox-img").src = images[currentIndex];
     }
   </script>
-
 </body>
 </html>
