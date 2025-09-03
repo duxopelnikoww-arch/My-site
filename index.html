@@ -1,13 +1,218 @@
-<section id="gallery">
-  <h2>Галерея</h2>
-  <div class="gallery">
-    <img src="photos/photos/IMG_0401.jpeg" alt="Фото 1">
-    <img src="photos/photos/IMG_0402.jpeg" alt="Фото 2">
-    <img src="photos/photos/IMG_0403.jpeg" alt="Фото 3">
-    <img src="photos/photos/IMG_0404.jpeg" alt="Фото 4">
-    <img src="photos/photos/IMG_0405.jpeg" alt="Фото 5">
-    <img src="photos/photos/IMG_0406.jpeg" alt="Фото 6">
-    <img src="photos/photos/IMG_0407.jpeg" alt="Фото 7">
-    <img src="photos/photos/IMG_0408.jpeg" alt="Фото 8">
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Мой сайт</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #6c63ff;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+
+    nav {
+      margin-top: 10px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    section {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #6c63ff;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 10px;
+    }
+
+    .gallery img {
+      width: 100%;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Модальное окно */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      padding-top: 50px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.9);
+    }
+
+    .modal-content {
+      margin: auto;
+      display: block;
+      max-width: 90%;
+      max-height: 80vh;
+    }
+
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 35px;
+      color: #fff;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #333;
+      color: white;
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: #6c63ff;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Добро пожаловать на мой сайт!</h1>
+    <nav>
+      <a href="#about">Обо мне</a>
+      <a href="#gallery">Галерея</a>
+      <a href="#contact">Контакты</a>
+    </nav>
+  </header>
+
+  <section id="about">
+    <h2>Обо мне</h2>
+    <p>
+      Привет! 👋 Я создаю уникальные воспоминания через фотографии.  
+      Моя цель — показать красоту и эмоции в каждом кадре, чтобы ваши моменты оставались с вами навсегда.  
+      Люблю работать с людьми, ловить улыбки и создавать истории в картинках. 📸✨
+    </p>
+  </section>
+
+  <section id="gallery">
+    <h2>Галерея</h2>
+    <div class="gallery" id="gallery"></div>
+  </section>
+
+  <section id="contact">
+    <h2>Контакты</h2>
+    <p>Телефон: <a href="tel:+79281400610">+7 (928) 140-06-10</a></p>
+    <p>Instagram: <a href="https://www.instagram.com/" target="_blank">instagram.com</a></p>
+  </section>
+
+  <footer>
+    <p>© 2025 Мой сайт. Все права защищены.</p>
+  </footer>
+
+  <!-- Модалка -->
+  <div id="myModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="imgModal">
   </div>
-</section>
+
+  <script>
+    // Список картинок вручную пока — можно дополнять
+    const images = [
+      "IMG_0401.jpeg",
+      "IMG_0402.jpeg",
+      "IMG_0403.jpeg",
+      "IMG_0404.jpeg",
+      "IMG_0405.jpeg",
+      "IMG_0406.jpeg",
+      "IMG_0407.jpeg",
+      "IMG_0408.jpeg"
+    ];
+
+    const gallery = document.getElementById("gallery");
+
+    images.forEach(file => {
+      const img = document.createElement("img");
+      img.src = `photos/photos/${file}`;
+      img.alt = file;
+      gallery.appendChild(img);
+    });
+
+    // Модалка
+    const modal = document.getElementById("myModal");
+    const modalImg = document.getElementById("imgModal");
+    const close = document.getElementsByClassName("close")[0];
+    let currentIndex = 0;
+
+    function showModal(index) {
+      modal.style.display = "block";
+      modalImg.src = `photos/photos/${images[index]}`;
+      currentIndex = index;
+    }
+
+    document.querySelectorAll(".gallery img").forEach((img, index) => {
+      img.addEventListener("click", () => showModal(index));
+    });
+
+    close.onclick = function() {
+      modal.style.display = "none";
+    }
+
+    document.addEventListener("keydown", (e) => {
+      if (modal.style.display === "block") {
+        if (e.key === "ArrowRight") {
+          currentIndex = (currentIndex + 1) % images.length;
+          modalImg.src = `photos/photos/${images[currentIndex]}`;
+        } else if (e.key === "ArrowLeft") {
+          currentIndex = (currentIndex - 1 + images.length) % images.length;
+          modalImg.src = `photos/photos/${images[currentIndex]}`;
+        } else if (e.key === "Escape") {
+          modal.style.display = "none";
+        }
+      }
+    });
+  </script>
+</body>
+</html>
