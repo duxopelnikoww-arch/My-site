@@ -7,109 +7,105 @@
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #fafafa;
+      font-family: 'Arial', sans-serif;
       color: #333;
+      background: #fafafa;
+      scroll-behavior: smooth;
     }
-    header {
-      background: #111;
-      color: white;
-      padding: 20px;
-      text-align: center;
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #fff;
+      padding: 15px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      z-index: 1000;
     }
-    header h1 {
-      margin: 0;
-      font-size: 28px;
-    }
-    header p {
-      margin: 5px 0 0;
-      font-size: 16px;
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
     }
     section {
-      padding: 40px 20px;
+      padding: 80px 20px;
       max-width: 1000px;
       margin: auto;
     }
-    h2 {
+    h1, h2 {
       text-align: center;
-      margin-bottom: 20px;
-      font-size: 26px;
+      margin-bottom: 30px;
     }
     .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 15px;
     }
     .gallery img {
       width: 100%;
       height: auto;
       border-radius: 8px;
-      cursor: pointer;
-      transition: transform 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
     }
     .gallery img:hover {
       transform: scale(1.05);
     }
-    /* Лайтбокс */
-    .lightbox {
-      display: none;
-      position: fixed;
-      z-index: 1000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.9);
-      justify-content: center;
-      align-items: center;
+    footer {
+      background: #333;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
     }
-    .lightbox img {
-      max-width: 90%;
-      max-height: 90%;
-      border-radius: 8px;
-    }
-    .lightbox:target {
-      display: flex;
-    }
-    .lightbox a {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      color: white;
-      font-size: 40px;
+    footer a {
+      color: #fff;
       text-decoration: none;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>Мельникова Ольга</h1>
-    <p>Фотограф</p>
-  </header>
+  <!-- Меню -->
+  <nav>
+    <a href="#about">Обо мне</a>
+    <a href="#gallery">Галерея</a>
+    <a href="#contacts">Контакты</a>
+  </nav>
 
+  <!-- Обо мне -->
+  <section id="about">
+    <h1>Мельникова Ольга</h1>
+    <p style="text-align:center; font-size:18px; max-width:700px; margin:auto;">
+      Я — профессиональный фотограф, специализируюсь на семейных, детских и индивидуальных фотосессиях.
+      В каждой съемке я стараюсь передать настоящие эмоции и сохранить для вас самые ценные моменты.
+    </p>
+  </section>
+
+  <!-- Галерея -->
   <section id="gallery">
     <h2>Галерея</h2>
     <div class="gallery">
-      <a href="#img1"><img src="IMG_7197.jpeg" alt="Фото 1"></a>
-      <a href="#img2"><img src="IMG_7198.jpeg" alt="Фото 2"></a>
-      <a href="#img3"><img src="IMG_7199.jpeg" alt="Фото 3"></a>
+      <img src="IMG_7197.jpeg" alt="Фото 1">
+      <img src="IMG_7198.jpeg" alt="Фото 2">
+      <img src="IMG_7199.jpeg" alt="Фото 3">
     </div>
   </section>
 
-  <!-- Лайтбокс -->
-  <div id="img1" class="lightbox">
-    <a href="#">×</a>
-    <img src="IMG_7197.jpeg" alt="Фото 1">
-  </div>
-  <div id="img2" class="lightbox">
-    <a href="#">×</a>
-    <img src="IMG_7198.jpeg" alt="Фото 2">
-  </div>
-  <div id="img3" class="lightbox">
-    <a href="#">×</a>
-    <img src="IMG_7199.jpeg" alt="Фото 3">
-  </div>
+  <!-- Контакты -->
+  <section id="contacts">
+    <h2>Контакты</h2>
+    <p style="text-align:center; font-size:18px;">
+      📩 Email: <a href="mailto:example@mail.com">example@mail.com</a><br>
+      📱 Instagram: <a href="https://www.instagram.com/melnikovaolga_ph" target="_blank">@melnikovaolga_ph</a>
+    </p>
+  </section>
+
+  <footer>
+    © 2025 Мельникова Ольга — Фотограф
+  </footer>
 
 </body>
 </html>
