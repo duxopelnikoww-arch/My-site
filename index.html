@@ -10,22 +10,23 @@
     body {
       margin: 0;
       font-family: 'Open Sans', sans-serif;
-      color: #333;
-      background: #fdfdfd;
+      color: #5c4b3b;
+      background: #fdf6e3 url('https://www.transparenttextures.com/patterns/watercolor.png');
       scroll-behavior: smooth;
     }
     h1, h2 {
       font-family: 'Playfair Display', serif;
       text-align: center;
       margin-bottom: 30px;
+      color: #5c4b3b;
     }
     nav {
       position: fixed;
       top: 0;
       width: 100%;
-      background: rgba(255,255,255,0.9);
+      background: rgba(253,246,227,0.95);
       padding: 15px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
       display: flex;
       justify-content: center;
       gap: 30px;
@@ -34,12 +35,12 @@
     }
     nav a {
       text-decoration: none;
-      color: #333;
+      color: #5c4b3b;
       font-weight: bold;
       transition: color 0.3s;
     }
     nav a:hover {
-      color: #b56576;
+      color: #8ca97d;
     }
     section {
       padding: 100px 20px;
@@ -70,10 +71,11 @@
       height: auto;
       border-radius: 10px;
       cursor: pointer;
-      transition: transform 0.3s;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
     .gallery img:hover {
       transform: scale(1.05);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
     /* Лайтбокс */
     .lightbox {
@@ -84,7 +86,7 @@
       top: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.95);
+      background: rgba(253,246,227,0.98);
       justify-content: center;
       align-items: center;
       flex-direction: column;
@@ -93,13 +95,14 @@
       max-width: 90%;
       max-height: 80%;
       border-radius: 10px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
     }
     .lightbox.active {
       display: flex;
     }
     .close, .prev, .next {
       position: absolute;
-      color: white;
+      color: #5c4b3b;
       font-size: 40px;
       text-decoration: none;
       cursor: pointer;
@@ -117,7 +120,7 @@
       display: inline-block;
       margin-top: 20px;
       padding: 12px 25px;
-      background: #b56576;
+      background: #d9826b;
       color: #fff;
       text-decoration: none;
       border-radius: 6px;
@@ -125,10 +128,10 @@
       transition: background 0.3s;
     }
     .btn:hover {
-      background: #9a4d61;
+      background: #8ca97d;
     }
     footer {
-      background: #333;
+      background: #5c4b3b;
       color: #fff;
       text-align: center;
       padding: 20px;
@@ -146,25 +149,26 @@
   </nav>
 
   <!-- Обо мне -->
-<section id="about" style="
-  background: url('IMG_7197.jpeg') center/cover no-repeat;
-  position: relative;
-  color: #5a4a42;
-  border-radius: 12px;
-  overflow: hidden;
-">
-  <div style="
-    background: rgba(255,250,245,0.85);
-    padding: 80px 20px;
+  <section id="about" style="
+    background: url('IMG_7197.jpeg') center/cover no-repeat;
+    position: relative;
+    color: #5c4b3b;
     border-radius: 12px;
+    overflow: hidden;
   ">
-    <h1>Мельникова Ольга</h1>
-    <p class="about-text">
-      Я — профессиональный фотограф, специализируюсь на семейных, детских и индивидуальных фотосессиях.
-      Моя цель — поймать настоящие эмоции и сохранить для вас самые ценные воспоминания.
-    </p>
-  </div>
-</section>
+    <div style="
+      background: rgba(253,246,227,0.85);
+      padding: 80px 20px;
+      border-radius: 12px;
+    ">
+      <h1>Мельникова Ольга</h1>
+      <p class="about-text">
+        Я — профессиональный фотограф, специализируюсь на семейных, детских и индивидуальных фотосессиях.
+        Моя цель — поймать настоящие эмоции и сохранить для вас самые ценные воспоминания.
+      </p>
+    </div>
+  </section>
+
   <!-- Галерея -->
   <section id="gallery">
     <h2>Галерея</h2>
